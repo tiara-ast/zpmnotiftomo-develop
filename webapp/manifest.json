@@ -41,6 +41,32 @@
                 "settings": {
                     "localUri": "annotations/annotation.xml"
                 }
+            },
+            "ZC_NOTIFTOORDER_AGGR_HRLM_CDS_Annotation": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_NOTIFTOORDER_AGGR_HRLM_CD_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZC_NOTIFTOORDER_AGGR_HRLM_CDS/ZC_NOTIFTOORDER_AGGR_HRLM_CDS_Annotation.xml"
+                }
+            },
+            "ZC_NOTIFTOORDER_AGGR_HRLM_CDS": {
+                "uri": "/sap/opu/odata/sap/ZC_NOTIFTOORDER_AGGR_HRLM_CDS",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZC_NOTIFTOORDER_AGGR_HRLM_CDS_Annotation",
+                        "annotation_hrlm"
+                    ],
+                    "localUri": "localService/ZC_NOTIFTOORDER_AGGR_HRLM_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "annotation_hrlm": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation_hrlm.xml",
+                "settings": {
+                    "localUri": "annotations/annotation_hrlm.xml"
+                }
             }
         }
     },
@@ -103,6 +129,13 @@
             "@i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "uri": "i18n/i18n.properties"
+            },
+            "ZC_NOTIFTOORDER_AGGR_HRLM_CDS": {
+                "dataSource": "ZC_NOTIFTOORDER_AGGR_HRLM_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultCountMode": "Inline"
+                }
             }
         },
         "resources": {
@@ -131,6 +164,18 @@
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#ThisMonthHRKPI",
                     "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#ThisMonthHRKPI",
                     "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#ThisMonthHRKPI"
+                }
+            },
+            "LastMonthHRKPI": {
+                "template": "sap.ovp.cards.charts.analytical",
+                "model": "ZC_NOTIFTOORDER_AGGR_HRLM_CDS",
+                "settings": {
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#LastMonthHRKPI",
+                    "entitySet": "ZC_NOTIFTOORDER_AGGR_HRLM",
+                    "title": "Last Month Notif Conversion to MO Under 20 Hour",
+                    "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#LastMonthHRKPI",
+                    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#LastMonthHRKPI",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#.LastMonthHRKPI"
                 }
             }
         },

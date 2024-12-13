@@ -49,6 +49,10 @@ server:
             url: https://vhpuadwdwd01.sap.essa.id:44380
             client: '110'
             authenticationType: basic
+          - path: /sap/opu/odata/sap/ZC_NOTIFTOORDER_AGGR_HRLM_CDS
+            url: https://vhpuadwdwd01.sap.essa.id:44380
+            client: '110'
+            authenticationType: basic
     - name: sap-fe-mockserver
       beforeMiddleware: csp
       configuration:
