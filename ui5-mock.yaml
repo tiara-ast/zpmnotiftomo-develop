@@ -34,6 +34,10 @@ server:
             url: https://vhpuadwdwd01.sap.essa.id:44380
             client: "110"
             authenticationType: basic
+          - path: /sap/opu/odata/sap/ZC_NOTIFTOORDER_AGGR_AVGLM_CDS
+            url: https://vhpuadwdwd01.sap.essa.id:44380
+            client: "110"
+            authenticationType: basic
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
@@ -74,6 +78,10 @@ server:
             metadataPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_AVGTM_CDS/metadata.xml
             mockdataPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_AVGTM_CDS/mockdata
             generateMockData: true
+          - urlPath: /sap/opu/odata/sap/ZC_NOTIFTOORDER_AGGR_AVGLM_CDS
+            generateMockData: true
+            metadataXmlPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_AVGLM_CDS/metadata.xml
+            mockdataRootPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_AVGLM_CDS/mockdata
         annotations:
           - localPath: ./webapp/localService/mainService/ZC_NOTIFTOORDER_AGGR_HRTM_CD_VAN.xml
             urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_NOTIFTOORDER_AGGR_HRTM_CD_VAN',Version='0001')/$value/
@@ -85,6 +93,12 @@ server:
             urlPath: annotations/annotation_hrlm.xml
           - localPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_AVGTM_CDS/ZC_NOTIFTOORDER_AGGR_AVGTM_CDS_Annotation.xml
             urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_NOTIFTOORDER_AGGR_AVGTM_C_VAN',Version='0001')/$value/
+          - localPath: ./webapp/annotations/annotationavgtm.xml
+            urlPath: annotations/annotationavgtm.xml
+          - localPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_AVGLM_CDS/ZC_NOTIFTOORDER_AGGR_AVGLM_CDS_Annotation.xml
+            urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_NOTIFTOORDER_AGGR_AVGLM_C_VAN',Version='0001')/$value/
+          - localPath: ./webapp/annotations/annotationavglm.xml
+            urlPath: annotations/annotationavglm.xml
 builder:
   customTasks:
     - name: ui5-tooling-transpile-task
