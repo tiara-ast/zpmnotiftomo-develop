@@ -67,6 +67,32 @@
                 "settings": {
                     "localUri": "annotations/annotation_hrlm.xml"
                 }
+            },
+            "ZC_NOTIFTOORDER_AGGR_AVGTM_CDS_Annotation": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_NOTIFTOORDER_AGGR_AVGTM_C_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZC_NOTIFTOORDER_AGGR_AVGTM_CDS/ZC_NOTIFTOORDER_AGGR_AVGTM_CDS_Annotation.xml"
+                }
+            },
+            "ZC_NOTIFTOORDER_AGGR_AVGTM_CDS": {
+                "uri": "/sap/opu/odata/sap/ZC_NOTIFTOORDER_AGGR_AVGTM_CDS",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZC_NOTIFTOORDER_AGGR_AVGTM_CDS_Annotation",
+                        "annotationavgtm"
+                    ],
+                    "localUri": "localService/ZC_NOTIFTOORDER_AGGR_AVGTM_CDS/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "annotationavgtm": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotationavgtm.xml",
+                "settings": {
+                    "localUri": "annotations/annotationavgtm.xml"
+                }
             }
         }
     },
@@ -136,6 +162,13 @@
                 "settings": {
                     "defaultCountMode": "Inline"
                 }
+            },
+            "ZC_NOTIFTOORDER_AGGR_AVGTM_CDS": {
+                "dataSource": "ZC_NOTIFTOORDER_AGGR_AVGTM_CDS",
+                "preload": true,
+                "settings": {
+                    "defaultCountMode": "Inline"
+                }
             }
         },
         "resources": {
@@ -176,6 +209,18 @@
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#LastMonthHRKPI",
                     "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#LastMonthHRKPI",
                     "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#.LastMonthHRKPI"
+                }
+            },
+            "ThisMonthAVGKPI": {
+                "template": "sap.ovp.cards.charts.analytical",
+                "model": "ZC_NOTIFTOORDER_AGGR_AVGTM_CDS",
+                "settings": {
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ThisMonthAVGKPI",
+                    "entitySet": "ZC_NOTIFTOORDER_AGGR_AVGTM",
+                    "title": "This Month Average Notif Conversion to MO",
+                    "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#ThisMonthAVGKPI",
+                    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#ThisMonthAVGKPI",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#.ThisMonthAVGKPI"
                 }
             }
         },
