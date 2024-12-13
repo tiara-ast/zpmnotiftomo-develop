@@ -16,9 +16,10 @@ server:
             - /test-resources
           url: https://ui5.sap.com
         backend:
-          - path: /sap
+          - path: /sap/opu/odata/sap/ZC_NOTIFTOORDER_AGGR_HRTM_CDS/
             url: https://vhpuadwdwd01.sap.essa.id:44380
             client: '110'
+            authenticationType: basic
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:

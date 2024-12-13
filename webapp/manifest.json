@@ -1,129 +1,143 @@
 {
-  "_version": "1.60.0",
-  "sap.app": {
-    "id": "com.essa.zpmnotiftomo",
-    "type": "application",
-    "i18n": "i18n/i18n.properties",
-    "applicationVersion": {
-      "version": "0.0.1"
+    "_version": "1.60.0",
+    "sap.app": {
+        "id": "com.essa.zpmnotiftomo",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:ovp",
+            "version": "1.15.4",
+            "toolsId": "10fd6bb1-be79-4beb-abec-30b775380495"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZC_NOTIFTOORDER_AGGR_HRTM_CDS/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "annotation",
+                        "ZC_NOTIFTOORDER_AGGR_HRTM_CD_VAN"
+                    ],
+                    "localUri": "localService/mainService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZC_NOTIFTOORDER_AGGR_HRTM_CD_VAN": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_NOTIFTOORDER_AGGR_HRTM_CD_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/mainService/ZC_NOTIFTOORDER_AGGR_HRTM_CD_VAN.xml"
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            }
+        }
     },
-    "title": "{{appTitle}}",
-    "description": "{{appDescription}}",
-    "resources": "resources.json",
-    "sourceTemplate": {
-      "id": "@sap/generator-fiori:ovp",
-      "version": "1.15.4",
-      "toolsId": "10fd6bb1-be79-4beb-abec-30b775380495"
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
     },
-    "dataSources": {
-      "mainService": {
-        "uri": "/sap/opu/odata/sap/ZC_NOTIFTOORDER_AGGR_HRTM_CDS/",
-        "type": "OData",
-        "settings": {
-          "annotations": [
-            "ZC_NOTIFTOORDER_AGGR_HRTM_CD_VAN",
-            "annotation"
-          ],
-          "localUri": "localService/metadata.xml",
-          "odataVersion": "2.0"
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.120.19",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.f": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ovp": {},
+                "sap.ui.rta": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.essa.zpmnotiftomo.i18n.i18n"
+                }
+            },
+            "mainModel": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "config": {},
+            "routes": [],
+            "targets": {}
         }
-      },
-      "ZC_NOTIFTOORDER_AGGR_HRTM_CD_VAN": {
-        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_NOTIFTOORDER_AGGR_HRTM_CD_VAN',Version='0001')/$value/",
-        "type": "ODataAnnotation",
-        "settings": {
-          "localUri": "localService/ZC_NOTIFTOORDER_AGGR_HRTM_CD_VAN.xml"
-        }
-      },
-      "annotation": {
-        "type": "ODataAnnotation",
-        "uri": "annotations/annotation.xml",
-        "settings": {
-          "localUri": "annotations/annotation.xml"
-        }
-      }
+    },
+    "sap.ovp": {
+        "globalFilterModel": "mainModel",
+        "globalFilterEntityType": "ZC_NOTIFTOORDER_AGGR_HRTMType",
+        "containerLayout": "resizable",
+        "enableLiveFilter": true,
+        "considerAnalyticalParameters": false,
+        "cards": {
+            "ThisMonthHRKPI": {
+                "template": "sap.ovp.cards.charts.analytical",
+                "model": "mainModel",
+                "settings": {
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#ThisMonthHRKPI",
+                    "entitySet": "ZC_NOTIFTOORDER_AGGR_HRTM",
+                    "title": "This Month Notif Conversion to MO Under 20 Hour",
+                    "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#ThisMonthHRKPI",
+                    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#ThisMonthHRKPI",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#ThisMonthHRKPI"
+                }
+            }
+        },
+        "chartSettings": {}
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "analytical"
     }
-  },
-  "sap.ui": {
-    "technology": "UI5",
-    "icons": {
-      "icon": "",
-      "favIcon": "",
-      "phone": "",
-      "phone@2": "",
-      "tablet": "",
-      "tablet@2": ""
-    },
-    "deviceTypes": {
-      "desktop": true,
-      "tablet": true,
-      "phone": true
-    }
-  },
-  "sap.ui5": {
-    "flexEnabled": true,
-    "dependencies": {
-      "minUI5Version": "1.120.19",
-      "libs": {
-        "sap.m": {},
-        "sap.ui.core": {},
-        "sap.ushell": {},
-        "sap.f": {},
-        "sap.ui.comp": {},
-        "sap.ui.generic.app": {},
-        "sap.suite.ui.generic.template": {},
-        "sap.ovp": {},
-        "sap.ui.rta": {},
-        "sap.ui.layout": {}
-      }
-    },
-    "contentDensities": {
-      "compact": true,
-      "cozy": true
-    },
-    "models": {
-      "i18n": {
-        "type": "sap.ui.model.resource.ResourceModel",
-        "settings": {
-          "bundleName": "com.essa.zpmnotiftomo.i18n.i18n"
-        }
-      },
-      "mainModel": {
-        "dataSource": "mainService",
-        "preload": true,
-        "settings": {
-          "defaultBindingMode": "TwoWay",
-          "defaultCountMode": "Inline",
-          "refreshAfterChange": false,
-          "metadataUrlParams": {
-            "sap-value-list": "none"
-          }
-        }
-      },
-      "@i18n": {
-        "type": "sap.ui.model.resource.ResourceModel",
-        "uri": "i18n/i18n.properties"
-      }
-    },
-    "resources": {
-      "css": []
-    },
-    "routing": {
-      "config": {},
-      "routes": [],
-      "targets": {}
-    }
-  },
-  "sap.ovp": {
-    "globalFilterModel": "mainModel",
-    "globalFilterEntityType": "ZC_NOTIFTOORDER_AGGR_HRTMType",
-    "containerLayout": "resizable",
-    "enableLiveFilter": true,
-    "considerAnalyticalParameters": false,
-    "cards": {}
-  },
-  "sap.fiori": {
-    "registrationIds": [],
-    "archeType": "analytical"
-  }
 }
