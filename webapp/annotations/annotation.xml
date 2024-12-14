@@ -20,9 +20,9 @@
                 </Annotation>
                 <Annotation Term="UI.Chart" Qualifier="ThisMonthHRKPI">
                     <Record Type="UI.ChartDefinitionType">
-                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bar"/>
-                        <PropertyValue Property="Title" String="This Month Notif Conversion to Maintenance Order Under 20 Hour"/>
-                        <PropertyValue Property="Description" String="This Month Notif Conversion to Maintenance Order Under 20 Hour"/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+                        <PropertyValue Property="Title" String="Group by Plant, Order Type and Work Center"/>
+                        <PropertyValue Property="Description" String=""/>
                         <PropertyValue Property="Dimensions">
                             <Collection>
                                 <PropertyPath>Werks</PropertyPath>
@@ -38,11 +38,11 @@
                                 </Record>
                                  <Record Type="UI.ChartDimensionAttributeType">
                                     <PropertyValue Property="Dimension" PropertyPath="Auart"/>
-                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Series"/>
                                 </Record>
                                  <Record Type="UI.ChartDimensionAttributeType">
                                     <PropertyValue Property="Dimension" PropertyPath="Ingpr"/>
-                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Series"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
@@ -50,6 +50,7 @@
                             <Collection>
                                 <PropertyPath>Actual</PropertyPath>
                                 <PropertyPath>TargetConversion</PropertyPath>
+                                <PropertyPath>Variance</PropertyPath>
                             </Collection>
                         </PropertyValue>
                         <PropertyValue Property="MeasureAttributes">
@@ -60,11 +61,11 @@
                                 </Record>
                                 <Record Type="UI.ChartMeasureAttributeType">
                                     <PropertyValue Property="Measure" PropertyPath="TargetConversion"/>
-                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis2"/>
                                 </Record>
                                 <Record Type="UI.ChartMeasureAttributeType">
                                     <PropertyValue Property="Measure" PropertyPath="Variance"/>
-                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis3"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
@@ -92,12 +93,101 @@
                     <Record Type="UI.DataPointType">
                         <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Information"/>
                         <PropertyValue Property="Value" Path="RecordCountTotal"/>
-                        <PropertyValue Property="Title" String="Total Order"/>
-                        <PropertyValue Property="Description" String="Total Order"/>
+                        <PropertyValue Property="Title" String="Total Order (Count)"/>
+                        <PropertyValue Property="Description" String="Total Order (Count)"/>
                     </Record>
                 </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="ThisMonthHRKPI">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="ZPMCustGUI" />
+                            <PropertyValue Property="Action" String="ZPMR020" />
+                            <PropertyValue Property="RequiresContext" Bool="false" />
+                        </Record>
+                    </Collection>
+                </Annotation>
             </Annotations>
-            <!-- Last Month HR KPI -->
+            <!-- Group by Month HR KPI -->
+            <Annotations Target="SAP.ZC_NOTIFTOORDER_AGGR_HRTMType">
+                <Annotation Term="UI.Chart" Qualifier="PlantThisMonthHRKPI">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+                        <PropertyValue Property="Title" String="Group by Plant"/>
+                        <PropertyValue Property="Description" String=""/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>Werks</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="Werks"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>Actual</PropertyPath>
+                                <PropertyPath>TargetConversion</PropertyPath>
+                                <PropertyPath>Variance</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="Actual"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="TargetConversion"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis2"/>
+                                </Record>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="Variance"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis3"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="PlantThisMonthHRKPI">
+                    <Record>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#ThisMonthHRKPI</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="Werks"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MaxItems" Int="5"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="PlantThisMonthHRKPI">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Information"/>
+                        <PropertyValue Property="Value" Path="RecordCountTotal"/>
+                        <PropertyValue Property="Title" String="Total Order (Count)"/>
+                        <PropertyValue Property="Description" String="Total Order (Count)"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="PlantThisMonthHRKPI">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="ZPMCustGUI" />
+                            <PropertyValue Property="Action" String="ZPMR020" />
+                            <PropertyValue Property="RequiresContext" Bool="false" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>

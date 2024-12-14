@@ -67,17 +67,17 @@ server:
             metadataXmlPath: ./webapp/localService/mainService/metadata.xml
             mockdataRootPath: ./webapp/localService/data
           - urlPath: /sap/opu/odata/sap/ZC_NOTIFTOORDER_AGGR_HRTM_CDS/
+            metadataPath: ./webapp/localService/mainService/metadata.xml
+            mockdataPath: ./webapp/localService/mainService/mockdata
             generateMockData: true
-            metadataXmlPath: ./webapp/localService/mainService/metadata.xml
-            mockdataRootPath: ./webapp/localService/mainService/mockdata
           - urlPath: /sap/opu/odata/sap/ZC_NOTIFTOORDER_AGGR_HRLM_CDS
             generateMockData: true
             metadataXmlPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_HRLM_CDS/metadata.xml
             mockdataRootPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_HRLM_CDS/mockdata
           - urlPath: /sap/opu/odata/sap/ZC_NOTIFTOORDER_AGGR_AVGTM_CDS
-            metadataPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_AVGTM_CDS/metadata.xml
-            mockdataPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_AVGTM_CDS/mockdata
             generateMockData: true
+            metadataXmlPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_AVGTM_CDS/metadata.xml
+            mockdataRootPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_AVGTM_CDS/mockdata
           - urlPath: /sap/opu/odata/sap/ZC_NOTIFTOORDER_AGGR_AVGLM_CDS
             generateMockData: true
             metadataXmlPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_AVGLM_CDS/metadata.xml

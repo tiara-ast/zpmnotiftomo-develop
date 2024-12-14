@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
     <edmx:DataServices m:DataServiceVersion="2.0">
         <Schema Namespace="ZC_NOTIFTOORDER_AGGR_HRTM_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
             <EntityType Name="ZC_NOTIFTOORDER_AGGR_HRTMType" sap:label="This Month Notif Conversion to Order" sap:semantics="aggregate" sap:content-version="1">
@@ -8,9 +11,9 @@
                 </Key>
                 <Property Name="ID" Type="Edm.String" Nullable="false" sap:filterable="false" sap:updatable="false" sap:sortable="false"/>
                 <Property Name="TotaledProperties" Type="Edm.String" sap:aggregation-role="totaled-properties-list" sap:is-annotation="true" sap:updatable="false" sap:sortable="false"/>
-                <Property Name="Werks" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:label="Plant" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="Ingpr" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Maint. Planner Group" sap:quickinfo="Planner Group for Customer Service and Plant Maintenance" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="Auart" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:label="Order Type" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Werks" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Auart" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:label="Order Type" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Ingpr" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Maint. Planner Group" sap:quickinfo="Planner Group for Customer Service and Plant Maintenance" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
                 <Property Name="TargetConversion" Type="Edm.Decimal" Precision="42" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:text="TargetConversion_F" sap:updatable="false" sap:label="Target (%)" sap:creatable="false"/>
                 <Property Name="TargetConversion_F" Type="Edm.String" MaxLength="60" sap:label="Target (%) (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
                 <Property Name="RecordCountHrUnderTarget" Type="Edm.Decimal" Precision="42" Scale="0" sap:aggregation-role="measure" sap:filterable="false" sap:text="RecordCountHrUnderTarget_F" sap:updatable="false" sap:label="RECORDCOUNTHRUNDERTARGET" sap:creatable="false"/>
@@ -26,6 +29,51 @@
                 <Property Name="Variance" Type="Edm.Decimal" Precision="42" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:text="Variance_F" sap:updatable="false" sap:label="Variance (%)" sap:creatable="false"/>
                 <Property Name="Variance_F" Type="Edm.String" MaxLength="60" sap:label="Variance (%) (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
             </EntityType>
+            <EntityType Name="Werks" sap:label="Plant (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Werks_ID"/>
+                </Key>
+                <Property Name="Werks_ID" Type="Edm.String" Nullable="false" MaxLength="4" sap:text="WerksText" sap:label="Plant" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WerksText" Type="Edm.String" sap:label="Plant (Description)" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="WerksResult" sap:label="Plant (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Werks"/>
+                </Key>
+                <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Plant" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Auart" Type="Edm.String" MaxLength="4" sap:label="Order Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Ingpr" Type="Edm.String" MaxLength="3" sap:label="Maint. Planner Group" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="Auart" sap:label="Order Type (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Auart_ID"/>
+                </Key>
+                <Property Name="Auart_ID" Type="Edm.String" Nullable="false" MaxLength="4" sap:text="AuartText" sap:label="Order Type" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="AuartText" Type="Edm.String" sap:label="Order Type (Description)" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="AuartResult" sap:label="Order Type (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Auart"/>
+                </Key>
+                <Property Name="Auart" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Order Type" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Werks" Type="Edm.String" MaxLength="4" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Ingpr" Type="Edm.String" MaxLength="3" sap:label="Maint. Planner Group" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="Ingpr" sap:label="Maint. Planner Group (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Ingpr_ID"/>
+                </Key>
+                <Property Name="Ingpr_ID" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="IngprText" sap:label="Maint. Planner Group" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IngprText" Type="Edm.String" sap:label="Maint. Planner Group (Description)" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="IngprResult" sap:label="Maint. Planner Group (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Ingpr"/>
+                </Key>
+                <Property Name="Ingpr" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Maint. Planner Group" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Werks" Type="Edm.String" MaxLength="4" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Auart" Type="Edm.String" MaxLength="4" sap:label="Order Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
             <EntityType Name="ODataQueryAdditionalMetadata" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="ODataQueryMetadata"/>
@@ -36,9 +84,75 @@
             </EntityType>
             <EntityContainer Name="ZC_NOTIFTOORDER_AGGR_HRTM_CDS_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
                 <EntitySet Name="ZC_NOTIFTOORDER_AGGR_HRTM" EntityType="ZC_NOTIFTOORDER_AGGR_HRTM_CDS.ZC_NOTIFTOORDER_AGGR_HRTMType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Werks" EntityType="ZC_NOTIFTOORDER_AGGR_HRTM_CDS.Werks" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="WerksResults" EntityType="ZC_NOTIFTOORDER_AGGR_HRTM_CDS.WerksResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Auart" EntityType="ZC_NOTIFTOORDER_AGGR_HRTM_CDS.Auart" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="AuartResults" EntityType="ZC_NOTIFTOORDER_AGGR_HRTM_CDS.AuartResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Ingpr" EntityType="ZC_NOTIFTOORDER_AGGR_HRTM_CDS.Ingpr" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="IngprResults" EntityType="ZC_NOTIFTOORDER_AGGR_HRTM_CDS.IngprResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="AdditionalMetadata" EntityType="ZC_NOTIFTOORDER_AGGR_HRTM_CDS.ODataQueryAdditionalMetadata" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
             </EntityContainer>
             <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="ZC_NOTIFTOORDER_AGGR_HRTM_CDS.ZC_NOTIFTOORDER_AGGR_HRTMType/Werks" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Plant ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="Werks"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Werks"/>
+                                    <PropertyValue Property="ValueListProperty" String="Werks_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="WerksText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_NOTIFTOORDER_AGGR_HRTM_CDS.ZC_NOTIFTOORDER_AGGR_HRTMType/Auart" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Order Type ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="Auart"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Auart"/>
+                                    <PropertyValue Property="ValueListProperty" String="Auart_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="AuartText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZC_NOTIFTOORDER_AGGR_HRTM_CDS.ZC_NOTIFTOORDER_AGGR_HRTMType/Ingpr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Maint. Planner Group ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="Ingpr"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Ingpr"/>
+                                    <PropertyValue Property="ValueListProperty" String="Ingpr_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="IngprText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
             <atom:link rel="self" href="https://VHPUADWDWD01.SAP.ESSA.ID:44380/sap/opu/odata/sap/ZC_NOTIFTOORDER_AGGR_HRTM_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
             <atom:link rel="latest-version" href="https://VHPUADWDWD01.SAP.ESSA.ID:44380/sap/opu/odata/sap/ZC_NOTIFTOORDER_AGGR_HRTM_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
         </Schema>

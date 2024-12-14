@@ -23,9 +23,9 @@
                 </Annotation>
                 <Annotation Term="UI.Chart" Qualifier="LastMonthAVGKPI">
                     <Record Type="UI.ChartDefinitionType">
-                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bar"/>
-                        <PropertyValue Property="Title" String="Last Month Average Notif Conversion to Maintenance Order"/>
-                        <PropertyValue Property="Description" String="Last Month Average Notif Conversion to Maintenance Order"/>
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+                        <PropertyValue Property="Title" String="Group by Plant, Order Type and Work Center"/>
+                        <PropertyValue Property="Description" String=""/>
                         <PropertyValue Property="Dimensions">
                             <Collection>
                                 <PropertyPath>Werks</PropertyPath>
@@ -41,11 +41,11 @@
                                 </Record>
                                  <Record Type="UI.ChartDimensionAttributeType">
                                     <PropertyValue Property="Dimension" PropertyPath="Auart"/>
-                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Series"/>
                                 </Record>
                                  <Record Type="UI.ChartDimensionAttributeType">
                                     <PropertyValue Property="Dimension" PropertyPath="Ingpr"/>
-                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Series"/>
                                 </Record>
                             </Collection>
                         </PropertyValue>
@@ -96,9 +96,99 @@
                     <Record Type="UI.DataPointType">
                         <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Information"/>
                         <PropertyValue Property="Value" Path="RecordCountTotal"/>
-                        <PropertyValue Property="Title" String="Total Order"/>
-                        <PropertyValue Property="Description" String="Total Order"/>
+                        <PropertyValue Property="Title" String="Total Order (Count)"/>
+                        <PropertyValue Property="Description" String="Total Order (Count)"/>
                     </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="LastMonthAVGKPI">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="ZPMCustGUI" />
+                            <PropertyValue Property="Action" String="ZPMR023" />
+                            <PropertyValue Property="RequiresContext" Bool="false" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+        </Annotations >
+        <!-- Group By Plant -->
+        <Annotations Target="SAP.ZC_NOTIFTOORDER_AGGR_AVGLMType">
+                <Annotation Term="UI.Chart" Qualifier="PlantLastMonthAVGKPI">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+                        <PropertyValue Property="Title" String="Group by Plant"/>
+                        <PropertyValue Property="Description" String=""/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>Werks</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="Werks"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>Actual</PropertyPath>
+                                <PropertyPath>Target</PropertyPath>
+                                <PropertyPath>Variance</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="Actual"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="Target"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="Variance"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="PlantLastMonthAVGKPI">
+                    <Record>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#LastMonthAVGKPI</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="Werks"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MaxItems" Int="5"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="PlantLastMonthAVGKPI">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Information"/>
+                        <PropertyValue Property="Value" Path="RecordCountTotal"/>
+                        <PropertyValue Property="Title" String="Total Order (Count)"/>
+                        <PropertyValue Property="Description" String="Total Order (Count)"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="PlantLastMonthAVGKPI">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="ZPMCustGUI" />
+                            <PropertyValue Property="Action" String="ZPMR023" />
+                            <PropertyValue Property="RequiresContext" Bool="false" />
+                        </Record>
+                    </Collection>
                 </Annotation>
         </Annotations >
         </Schema>
