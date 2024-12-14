@@ -11,9 +11,11 @@
                 </Key>
                 <Property Name="ID" Type="Edm.String" Nullable="false" sap:filterable="false" sap:updatable="false" sap:sortable="false"/>
                 <Property Name="TotaledProperties" Type="Edm.String" sap:aggregation-role="totaled-properties-list" sap:is-annotation="true" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderCrtrd" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="MO Created Date" sap:quickinfo="Maintenance Order Created Date" sap:creatable="false" sap:updatable="false" sap:semantics="yearmonthday"/>
+                <Property Name="OrderCrtrd_T" Type="Edm.String" MaxLength="10" sap:label="MO Created Date (Description)" sap:quickinfo="Maintenance Order Created Date" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
                 <Property Name="Werks" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
                 <Property Name="Auart" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:label="Order Type" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
-                <Property Name="Ingpr" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Maint. Planner Group" sap:quickinfo="Planner Group for Customer Service and Plant Maintenance" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="Ingpr" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Main Work Center" sap:quickinfo="Planner Group for Customer Service and Plant Maintenance" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
                 <Property Name="TargetConversion" Type="Edm.Decimal" Precision="42" Scale="2" sap:aggregation-role="measure" sap:filterable="false" sap:text="TargetConversion_F" sap:updatable="false" sap:label="Target (%)" sap:creatable="false"/>
                 <Property Name="TargetConversion_F" Type="Edm.String" MaxLength="60" sap:label="Target (%) (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
                 <Property Name="RecordCountHrUnderTarget" Type="Edm.Decimal" Precision="42" Scale="0" sap:aggregation-role="measure" sap:filterable="false" sap:text="RecordCountHrUnderTarget_F" sap:updatable="false" sap:label="RECORDCOUNTHRUNDERTARGET" sap:creatable="false"/>
@@ -41,8 +43,10 @@
                     <PropertyRef Name="Werks"/>
                 </Key>
                 <Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Plant" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="OrderCrtrd" Type="Edm.String" MaxLength="10" sap:text="OrderCrtrd_T" sap:label="MO Created Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderCrtrd_T" Type="Edm.String" sap:label="MO Created Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Auart" Type="Edm.String" MaxLength="4" sap:label="Order Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
-                <Property Name="Ingpr" Type="Edm.String" MaxLength="3" sap:label="Maint. Planner Group" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Ingpr" Type="Edm.String" MaxLength="3" sap:label="Main Work Center" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
             </EntityType>
             <EntityType Name="Auart" sap:label="Order Type (Master Data)" sap:value-list="true" sap:content-version="1">
                 <Key>
@@ -56,21 +60,25 @@
                     <PropertyRef Name="Auart"/>
                 </Key>
                 <Property Name="Auart" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Order Type" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="OrderCrtrd" Type="Edm.String" MaxLength="10" sap:text="OrderCrtrd_T" sap:label="MO Created Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderCrtrd_T" Type="Edm.String" sap:label="MO Created Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Werks" Type="Edm.String" MaxLength="4" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
-                <Property Name="Ingpr" Type="Edm.String" MaxLength="3" sap:label="Maint. Planner Group" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Ingpr" Type="Edm.String" MaxLength="3" sap:label="Main Work Center" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
             </EntityType>
-            <EntityType Name="Ingpr" sap:label="Maint. Planner Group (Master Data)" sap:value-list="true" sap:content-version="1">
+            <EntityType Name="Ingpr" sap:label="Main Work Center (Master Data)" sap:value-list="true" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Ingpr_ID"/>
                 </Key>
-                <Property Name="Ingpr_ID" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="IngprText" sap:label="Maint. Planner Group" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="IngprText" Type="Edm.String" sap:label="Maint. Planner Group (Description)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Ingpr_ID" Type="Edm.String" Nullable="false" MaxLength="3" sap:text="IngprText" sap:label="Main Work Center" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IngprText" Type="Edm.String" sap:label="Main Work Center (Description)" sap:creatable="false" sap:updatable="false"/>
             </EntityType>
-            <EntityType Name="IngprResult" sap:label="Maint. Planner Group (Booked Data)" sap:value-list="true" sap:content-version="1">
+            <EntityType Name="IngprResult" sap:label="Main Work Center (Booked Data)" sap:value-list="true" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Ingpr"/>
                 </Key>
-                <Property Name="Ingpr" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Maint. Planner Group" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Ingpr" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Main Work Center" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="OrderCrtrd" Type="Edm.String" MaxLength="10" sap:text="OrderCrtrd_T" sap:label="MO Created Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderCrtrd_T" Type="Edm.String" sap:label="MO Created Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Werks" Type="Edm.String" MaxLength="4" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
                 <Property Name="Auart" Type="Edm.String" MaxLength="4" sap:label="Order Type" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
             </EntityType>
@@ -136,7 +144,7 @@
             <Annotations Target="ZC_NOTIFTOORDER_AGGR_HRTM_CDS.ZC_NOTIFTOORDER_AGGR_HRTMType/Ingpr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
-                        <PropertyValue Property="Label" String="Maint. Planner Group ( Master Data )"/>
+                        <PropertyValue Property="Label" String="Main Work Center ( Master Data )"/>
                         <PropertyValue Property="CollectionPath" String="Ingpr"/>
                         <PropertyValue Property="SearchSupported" Bool="false"/>
                         <PropertyValue Property="Parameters">

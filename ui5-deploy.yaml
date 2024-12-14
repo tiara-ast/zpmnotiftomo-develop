@@ -17,12 +17,13 @@ builder:
       configuration:
         target:
           url: https://vhpuadwdwd01.sap.essa.id:44380
-          client: '110'
+          client: '100'
+          scp: true
         app:
-          name: /UI5/ZPMNOTIFTOORD
+          name: ZPMNOTIFTOORD
           description: Notification Conversion To Maintenance Order
-          package: zespi
-          transport: DS4K907394
+          package: ZESPI
+          transport: env:TRANSPORT_REQUEST
         exclude:
           - /test/
   resources:

@@ -8,6 +8,8 @@
                 </Key>
                 <Property Name="ID" Type="Edm.String" Nullable="false" sap:filterable="false" sap:updatable="false" sap:sortable="false"/>
                 <Property Name="TotaledProperties" Type="Edm.String" sap:aggregation-role="totaled-properties-list" sap:is-annotation="true" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderCrtrd" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="MO Created Date" sap:quickinfo="Maintenance Order Created Date" sap:creatable="false" sap:updatable="false" sap:semantics="yearmonthday"/>
+                <Property Name="OrderCrtrd_T" Type="Edm.String" MaxLength="10" sap:label="MO Created Date (Description)" sap:quickinfo="Maintenance Order Created Date" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
                 <Property Name="Ingpr" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Maint. Planner Group" sap:quickinfo="Planner Group for Customer Service and Plant Maintenance" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Auart" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:label="Order Type" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Werks" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:label="Plant" sap:creatable="false" sap:updatable="false"/>
