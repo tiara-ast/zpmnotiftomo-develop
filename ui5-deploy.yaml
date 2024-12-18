@@ -18,12 +18,11 @@ builder:
         target:
           url: https://vhpuadwdwd01.sap.essa.id:44380
           client: '100'
-          scp: true
         app:
           name: ZPMNOTIFTOORD
           description: Notification Conversion To Maintenance Order
-          package: ZESPI
-          transport: env:TRANSPORT_REQUEST
+          package: ZPM_NOTIFTOORD
+          transport: DS4K907394
         exclude:
           - /test/
   resources:

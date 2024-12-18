@@ -107,9 +107,9 @@
                         </Record>
                     </Collection>
                 </Annotation>
-            </Annotations>
+          
             <!-- Group by Month HR KPI -->
-            <Annotations Target="SAP.ZC_NOTIFTOORDER_AGGR_HRTMType">
+            
                 <Annotation Term="UI.Chart" Qualifier="PlantThisMonthHRKPI">
                     <Record Type="UI.ChartDefinitionType">
                         <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>

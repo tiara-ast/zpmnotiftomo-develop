@@ -110,9 +110,9 @@
                         </Record>
                     </Collection>
                 </Annotation>
-            </Annotations>
+            
             <!-- Groupby Plant -->
-            <Annotations Target="SAP.ZC_NOTIFTOORDER_AGGR_HRType">
+            
                 <Annotation Term="UI.Chart" Qualifier="PlantDateRangeHrKPI">
                     <Record Type="UI.ChartDefinitionType">
                         <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>

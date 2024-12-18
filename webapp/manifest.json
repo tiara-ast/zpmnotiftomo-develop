@@ -297,7 +297,7 @@
         "globalFilterEntityType": "ZC_NOTIFTOORDER_AGGR_HRTMType",
         "containerLayout": "resizable",
         "enableLiveFilter": true,
-        "considerAnalyticalParameters": false,
+        "considerAnalyticalParameters": true,
         "cards": {
             "ThisMonthHRKPI": {
                 "template": "sap.ovp.cards.charts.analytical",
@@ -321,7 +321,7 @@
                     "title": "Last Month Notif Conversion to MO by Plant, Order Type, Work Center",
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#LastMonthHRKPI",
                     "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#LastMonthHRKPI",
-                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#.LastMonthHRKPI",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#LastMonthHRKPI",
                     "customParams": "LastMonthHRKPI"
                 }
             },
@@ -334,7 +334,7 @@
                     "title": "This Month Average by Plant, Order Type, Work Center",
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#ThisMonthAVGKPI",
                     "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#ThisMonthAVGKPI",
-                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#.ThisMonthAVGKPI",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#ThisMonthAVGKPI",
                     "customParams": "ThisMonthAVGKPI"
                 }
             },
@@ -347,7 +347,7 @@
                     "title": "Last Month Average by Plant, Order Type, Work Center",
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#LastMonthAVGKPI",
                     "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#LastMonthAVGKPI",
-                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#.LastMonthAVGKPI",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#LastMonthAVGKPI",
                     "customParams": "LastMonthAVGKPI"
                 }
             },
@@ -373,7 +373,7 @@
                     "title": "Last Month Notif Conversion to MO by Plant",
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#PlantLastMonthHRKPI",
                     "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PlantLastMonthHRKPI",
-                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#.PlantLastMonthHRKPI",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#PlantLastMonthHRKPI",
                     "customParams": "PlantLastMonthHRKPI"
                 }
             },
@@ -386,7 +386,7 @@
                     "title": "This Month Average Notif Conversion to MO by Plant",
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#PlantThisMonthAVGKPI",
                     "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PlantThisMonthAVGKPI",
-                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#.PlantThisMonthAVGKPI",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#PlantThisMonthAVGKPI",
                     "customParams": "PlantThisMonthAVGKPI"
                 }
             },
@@ -399,7 +399,7 @@
                     "title": "Last Month Average Notif Conversion to MO by Plant",
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#PlantLastMonthAVGKPI",
                     "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PlantLastMonthAVGKPI",
-                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#.PlantLastMonthAVGKPI",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#PlantLastMonthAVGKPI",
                     "customParams": "PlantLastMonthAVGKPI"
                 }
             },
@@ -412,7 +412,7 @@
                     "title": "To Date Notif Conversion to MO by Plant, Order Type, Work Center",
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#DateRangeHrKPI",
                     "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#DateRangeHrKPI",
-                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#.DateRangeHrKPI",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#DateRangeHrKPI",
                     "customParams": "DateRangeHrKPI"
                 }
             },
@@ -425,7 +425,7 @@
                     "title": "To Date Notif Conversion to MO by Plant",
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#PlantDateRangeHrKPI",
                     "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PlantDateRangeHrKPI",
-                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#.PlantDateRangeHrKPI",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#PlantDateRangeHrKPI",
                     "customParams": "PlantDateRangeHrKPI"
                 }
             },
@@ -438,7 +438,7 @@
                     "title": "To Date Average Conversion to MO by Plant, Order Type, Work Center",
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#DateRangeAvgKPI",
                     "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#DateRangeAvgKPI",
-                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#.DateRangeAvgKPI",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#DateRangeAvgKPI",
                     "customParams": "DateRangeAvgKPI"
                 }
             },
@@ -451,7 +451,7 @@
                     "title": "To Date Average Conversion to MO by Plant",
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#PlantDateRangeAvgKPI",
                     "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PlantDateRangeAvgKPI",
-                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#.PlantDateRangeAvgKPI",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#PlantDateRangeAvgKPI",
                     "customParams": "PlantDateRangeAvgKPI"
                 }
             }

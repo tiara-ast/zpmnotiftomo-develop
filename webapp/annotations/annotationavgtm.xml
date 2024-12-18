@@ -19,6 +19,7 @@
                         <PropertyPath>Werks</PropertyPath>
                         <PropertyPath>Auart</PropertyPath>
                         <PropertyPath>Ingpr</PropertyPath>
+                        <PropertyPath>OrderCrtrd</PropertyPath>
                     </Collection>
                 </Annotation>
                 <Annotation Term="UI.Chart" Qualifier="ThisMonthAVGKPI">
@@ -109,9 +110,9 @@
                         </Record>
                     </Collection>
                 </Annotation>
-        </Annotations >
+        
         <!-- Group by Plant -->
-        <Annotations Target="SAP.ZC_NOTIFTOORDER_AGGR_AVGTMType">
+        
                 <Annotation Term="UI.Chart" Qualifier="PlantThisMonthAVGKPI">
                     <Record Type="UI.ChartDefinitionType">
                         <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
