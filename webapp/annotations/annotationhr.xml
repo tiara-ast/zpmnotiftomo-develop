@@ -105,7 +105,7 @@
                     <Collection>
                         <Record Type="UI.DataFieldForIntentBasedNavigation">
                             <PropertyValue Property="SemanticObject" String="ZPMCustGUI" />
-                            <PropertyValue Property="Action" String="ZPMR021" />
+                            <PropertyValue Property="Action" String="ZPMR020" />
                             <PropertyValue Property="RequiresContext" Bool="false" />
                         </Record>
                     </Collection>
@@ -181,6 +181,15 @@
                         <PropertyValue Property="Title" String="Total Order (Count)"/>
                         <PropertyValue Property="Description" String="Total Order (Count)"/>
                     </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="PlantDateRangeHrKPI">
+                    <Collection>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="ZPMCustGUI" />
+                            <PropertyValue Property="Action" String="ZPMR020" />
+                            <PropertyValue Property="RequiresContext" Bool="false" />
+                        </Record>
+                    </Collection>
                 </Annotation>
             </Annotations>
         </Schema>

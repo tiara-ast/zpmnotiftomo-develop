@@ -16,19 +16,23 @@ export default {
     onCustomParams(sCustomParams) {
         debugger
         if (sCustomParams === "ThisMonthHRKPI") {
-            return this.paramthismonthhrkpi.bind(this);
+            return this.paramThisMonthHRKPI.bind(this);
         } else if (sCustomParams === "LastMonthHRKPI") {
-            return this.paramlastmonthhrkpi.bind(this);
+            return this.paramLastMonthHRKPI.bind(this);
         } else if (sCustomParams === "ThisMonthAVGKPI") {
-            return this.paramthismonthavgkpi.bind(this);
+            return this.paramThisMonthAVGKPI.bind(this);
         } else if (sCustomParams === "LastMonthAVGKPI") {
-            return this.paramlastmonthavgkpi.bind(this);
+            return this.paramLastMonthAVGKPI.bind(this);
+        } else if (sCustomParams === "DateRangeHrKPI") {
+            return this.paramDateRangeHrKPI.bind(this);
+        } else if (sCustomParams === "DateRangeAvgKPI") {
+            return this.paramDateRangeAvgKPI.bind(this);
         }
     },
 
     getBasicParams(oNavigateParams, oSelectionVariantParams: SelectionVariant): object[] {
 
-        const basicParams = ['Werks', 'Auart', 'Ingpr','OrderCrtrd']
+        const basicParams = ['Werks', 'Auart', 'Ingpr']
         const params = []
 
         basicParams.forEach(b => {
@@ -69,129 +73,237 @@ export default {
 
 
         return params
-    }
+    },
 
+    getBasicParams2(oNavigateParams, oSelectionVariantParams: SelectionVariant): object[] {
 
-    // paramThisMonthHRKPI(oNavigateParams, oSelectionVariantParams: SelectionVariant) {
+        const basicParams = ['Werks', 'Auart', 'Ingpr','OrderCrtrd']
+        const params = []
 
-    //     const params = this.getBasicParams(oNavigateParams, oSelectionVariantParams)
+        basicParams.forEach(b => {
+            const selParam = oSelectionVariantParams.getSelectOption(b)
 
-    //     const baseDateStr = oSelectionVariantParams.getParameter('Ordercrtrd')
-    //    //const lastMonthPeriod = this.getLastMonthPeriod(baseDateStr)
+            if (oNavigateParams[b]) {
+                params.push({
+                    path: b,
+                    operator: 'EQ',
+                    value1: oNavigateParams[b],
+                    value2: '',
+                    sign: 'I'
+                })
 
-    //     const firstDate = lastMonthPeriod[0]
-    //     const lastDate = lastMonthPeriod[1]
+            } else {
+                if (selParam) {
+                    selParam.forEach(p => {
+                        params.push({
+                            path: b,
+                            operator: p.Option,
+                            value1: p.Low,
+                            value2: p.high,
+                            sign: p.Sign
+                        })
+                    })
+                } else {
+                    params.push({
+                        path: b,
+                        operator: 'EQ',
+                        value1: '',
+                        value2: '',
+                        sign: 'I'
+                    })
+                }
+            }
+        })
 
-    //     const formatter = DateFormat.getDateInstance({ pattern: 'dd.MM.yyyy' })
+        return params
+    },
 
-    //     params.push({
-    //         path: 'From',
-    //         operator: 'EQ',
-    //         value1: formatter.format(firstDate),
-    //         value2: '',
-    //         sign: 'I'
-    //     })
+     paramThisMonthHRKPI(oNavigateParams, oSelectionVariantParams: SelectionVariant) {
+debugger
+        const params = this.getBasicParams2(oNavigateParams, oSelectionVariantParams)
+        const SelDate = params.path["OrderCrtrd"]
 
-    //     params.push({
-    //         path: 'To',
-    //         operator: 'EQ',
-    //         value1: formatter.format(lastDate),
-    //         value2: '',
-    //         sign: 'I'
-    //     })
+        const year = parseInt(SelDate.substring(0, 4))
+        const month = parseInt(SelDate.substring(5, 7))
+        const day = parseInt(SelDate.substring(8, 10))
 
-    //     return params
-    // },
+        const DateFr = new Date(year, month, day)
+        const DateTo = new Date(year, month, day)
+        const formatter = DateFormat.getDateInstance({ pattern: 'dd.MM.yyyy' })
 
-    // paramLastMonthHRKPI(oNavigateParams, oSelectionVariantParams: SelectionVariant) {
+        params.push({
+            path: 'DateFr',
+            operator: 'EQ',
+            value1: formatter.format(DateFr),
+            value2: '',
+            sign: 'I'
+        })
 
-    //     const params = this.getBasicParams(oNavigateParams, oSelectionVariantParams)
+        params.push({
+            path: 'DateTo',
+            operator: 'EQ',
+            value1: formatter.format(DateTo),
+            value2: '',
+            sign: 'I'
+        })
 
-    //     const baseDateStr = oSelectionVariantParams.getParameter('OrderCrtrd')
-    //    // const thisMonthPeriod = this.getThisMonthPeriod(baseDateStr)
+         return params
+     },
 
-    //    // const firstDate = thisMonthPeriod[0]
-    //    // const lastDate = thisMonthPeriod[1]
+     paramLastMonthHRKPI(oNavigateParams, oSelectionVariantParams: SelectionVariant) {
 
-    //     const formatter = DateFormat.getDateInstance({ pattern: 'dd.MM.yyyy' })
+         const params = this.getBasicParams2(oNavigateParams, oSelectionVariantParams)
+         const SelDate = oSelectionVariantParams.getParameter('OrderCrtrd')
 
-    //     params.push({
-    //         path: 'From',
-    //         operator: 'EQ',
-    //         value1: formatter.format(firstDate),
-    //         value2: '',
-    //         sign: 'I'
-    //     })
+         const year = parseInt(SelDate.substring(0, 4))
+         const month = parseInt(SelDate.substring(5, 7))
+         const day = parseInt(SelDate.substring(8, 10))
+ 
+         const DateFr = new Date(year, month, day)
+         const DateTo = new Date(year, month, day)
+         const formatter = DateFormat.getDateInstance({ pattern: 'dd.MM.yyyy' })
+ 
+         params.push({
+             path: 'DateFr',
+             operator: 'EQ',
+             value1: formatter.format(DateFr),
+             value2: '',
+             sign: 'I'
+         })
+ 
+         params.push({
+             path: 'DateTo',
+             operator: 'EQ',
+             value1: formatter.format(DateTo),
+             value2: '',
+             sign: 'I'
+         })
+ 
+         return params
+     },
 
-    //     params.push({
-    //         path: 'To',
-    //         operator: 'EQ',
-    //         value1: formatter.format(lastDate),
-    //         value2: '',
-    //         sign: 'I'
-    //     })
+     paramThisMonthAVGKPI(oNavigateParams, oSelectionVariantParams: SelectionVariant) {
 
-    //     return params
-    // },
+         const params = this.getBasicParams2(oNavigateParams, oSelectionVariantParams)
+         const SelDate = oSelectionVariantParams.getParameter('OrderCrtrd')
 
-    // paramThisMonthAVGKPI(oNavigateParams, oSelectionVariantParams: SelectionVariant) {
+         const year = parseInt(SelDate.substring(0, 4))
+         const month = parseInt(SelDate.substring(5, 7))
+         const day = parseInt(SelDate.substring(8, 10))
+ 
+         const DateFr = new Date(year, month, day)
+         const DateTo = new Date(year, month, day)
+         const formatter = DateFormat.getDateInstance({ pattern: 'dd.MM.yyyy' })
+ 
+         params.push({
+             path: 'DateFr',
+             operator: 'EQ',
+             value1: formatter.format(DateFr),
+             value2: '',
+             sign: 'I'
+         })
+ 
+         params.push({
+             path: 'DateTo',
+             operator: 'EQ',
+             value1: formatter.format(DateTo),
+             value2: '',
+             sign: 'I'
+         })
+ 
+         return params
+     },
+     paramLastMonthAVGKPI(oNavigateParams, oSelectionVariantParams: SelectionVariant) {
 
-    //     const params = this.getBasicParams(oNavigateParams, oSelectionVariantParams)
+         const params = this.getBasicParams2(oNavigateParams, oSelectionVariantParams)
+         const SelDate = oSelectionVariantParams.getParameter('OrderCrtrd')
 
-    //     const baseDateStr = oSelectionVariantParams.getParameter('OrderCrtrd')
-    //     const lastMonthPeriod = this.getLastMonthPeriod(baseDateStr)
+         const year = parseInt(SelDate.substring(0, 4))
+         const month = parseInt(SelDate.substring(5, 7))
+         const day = parseInt(SelDate.substring(8, 10))
+ 
+         const DateFr = new Date(year, month, day)
+         const DateTo = new Date(year, month, day)
+         const formatter = DateFormat.getDateInstance({ pattern: 'dd.MM.yyyy' })
+ 
+         params.push({
+             path: 'DateFr',
+             operator: 'EQ',
+             value1: formatter.format(DateFr),
+             value2: '',
+             sign: 'I'
+         })
+ 
+         params.push({
+             path: 'DateTo',
+             operator: 'EQ',
+             value1: formatter.format(DateTo),
+             value2: '',
+             sign: 'I'
+         })
+ 
+         return params
+     },
+     paramDateRangeAvgKPI(oNavigateParams, oSelectionVariantParams: SelectionVariant) {
 
-    //     const firstDate = lastMonthPeriod[0]
-    //     const lastDate = lastMonthPeriod[1]
+        const params = this.getBasicParams2(oNavigateParams, oSelectionVariantParams)
+        const SelDate = oSelectionVariantParams.getParameter('OrderCrtrd')
 
-    //     const formatter = DateFormat.getDateInstance({ pattern: 'dd.MM.yyyy' })
+        const year = parseInt(SelDate.substring(0, 4))
+        const month = parseInt(SelDate.substring(5, 7))
+        const day = parseInt(SelDate.substring(8, 10))
 
-    //     params.push({
-    //         path: 'From',
-    //         operator: 'EQ',
-    //         value1: formatter.format(firstDate),
-    //         value2: '',
-    //         sign: 'I'
-    //     })
+        const DateFr = new Date(year, month, day)
+        const DateTo = new Date(year, month, day)
+        const formatter = DateFormat.getDateInstance({ pattern: 'dd.MM.yyyy' })
 
-    //     params.push({
-    //         path: 'To',
-    //         operator: 'EQ',
-    //         value1: formatter.format(lastDate),
-    //         value2: '',
-    //         sign: 'I'
-    //     })
+        params.push({
+            path: 'DateFr',
+            operator: 'EQ',
+            value1: formatter.format(DateFr),
+            value2: '',
+            sign: 'I'
+        })
 
-    //     return params
-    // },
-    // paramLastMonthAVGKPI(oNavigateParams, oSelectionVariantParams: SelectionVariant) {
+        params.push({
+            path: 'DateTo',
+            operator: 'EQ',
+            value1: formatter.format(DateTo),
+            value2: '',
+            sign: 'I'
+        })
 
-    //     const params = this.getBasicParams(oNavigateParams, oSelectionVariantParams)
+        return params
+    },
+    paramDateRangeHrKPI(oNavigateParams, oSelectionVariantParams: SelectionVariant) {
 
-    //     const baseDateStr = oSelectionVariantParams.getParameter('OrderCrtrd')
-    //     const lastMonthPeriod = this.getLastMonthPeriod(baseDateStr)
+        const params = this.getBasicParams2(oNavigateParams, oSelectionVariantParams)
+        const SelDate = oSelectionVariantParams.getParameter('OrderCrtrd')
 
-    //     const firstDate = lastMonthPeriod[0]
-    //     const lastDate = lastMonthPeriod[1]
+        const year = parseInt(SelDate.substring(0, 4))
+        const month = parseInt(SelDate.substring(5, 7))
+        const day = parseInt(SelDate.substring(8, 10))
 
-    //     const formatter = DateFormat.getDateInstance({ pattern: 'dd.MM.yyyy' })
+        const DateFr = new Date(year, month, day)
+        const DateTo = new Date(year, month, day)
+        const formatter = DateFormat.getDateInstance({ pattern: 'dd.MM.yyyy' })
 
-    //     params.push({
-    //         path: 'From',
-    //         operator: 'EQ',
-    //         value1: formatter.format(firstDate),
-    //         value2: '',
-    //         sign: 'I'
-    //     })
+        params.push({
+            path: 'DateFr',
+            operator: 'EQ',
+            value1: formatter.format(DateFr),
+            value2: '',
+            sign: 'I'
+        })
 
-    //     params.push({
-    //         path: 'To',
-    //         operator: 'EQ',
-    //         value1: formatter.format(lastDate),
-    //         value2: '',
-    //         sign: 'I'
-    //     })
+        params.push({
+            path: 'DateTo',
+            operator: 'EQ',
+            value1: formatter.format(DateTo),
+            value2: '',
+            sign: 'I'
+        })
 
-    //     return params
-    // },
+        return params
+    },
 }

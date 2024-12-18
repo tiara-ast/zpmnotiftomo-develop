@@ -290,6 +290,15 @@
             "config": {},
             "routes": [],
             "targets": {}
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.controllerExtensions": {
+                    "sap.ovp.app.Main": {
+                        "controllerName": "com.essa.zpmnotiftomo.ext.controller.notifkpi"
+                    }
+                }
+            }
         }
     },
     "sap.ovp": {
@@ -361,7 +370,7 @@
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#PlantThisMonthHRKPI",
                     "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PlantThisMonthHRKPI",
                     "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#PlantThisMonthHRKPI",
-                    "customParams": "PlantThisMonthHRKPI"
+                    "customParams": "ThisMonthHRKPI"
                 }
             },
             "PlantLastMonthHRKPI": {
@@ -374,7 +383,7 @@
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#PlantLastMonthHRKPI",
                     "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PlantLastMonthHRKPI",
                     "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#PlantLastMonthHRKPI",
-                    "customParams": "PlantLastMonthHRKPI"
+                    "customParams": "LastMonthHRKPI"
                 }
             },
             "PlantThisMonthAVGKPI": {
@@ -387,7 +396,7 @@
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#PlantThisMonthAVGKPI",
                     "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PlantThisMonthAVGKPI",
                     "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#PlantThisMonthAVGKPI",
-                    "customParams": "PlantThisMonthAVGKPI"
+                    "customParams": "ThisMonthAVGKPI"
                 }
             },
             "PlantLastMonthAVGKPI": {
@@ -400,7 +409,7 @@
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#PlantLastMonthAVGKPI",
                     "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PlantLastMonthAVGKPI",
                     "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#PlantLastMonthAVGKPI",
-                    "customParams": "PlantLastMonthAVGKPI"
+                    "customParams": "LastMonthAVGKPI"
                 }
             },
             "DateRangeHrKPI": {
@@ -426,7 +435,7 @@
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#PlantDateRangeHrKPI",
                     "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PlantDateRangeHrKPI",
                     "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#PlantDateRangeHrKPI",
-                    "customParams": "PlantDateRangeHrKPI"
+                    "customParams": "DateRangeHrKPI"
                 }
             },
             "DateRangeAvgKPI": {
@@ -452,7 +461,7 @@
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#PlantDateRangeAvgKPI",
                     "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PlantDateRangeAvgKPI",
                     "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#PlantDateRangeAvgKPI",
-                    "customParams": "PlantDateRangeAvgKPI"
+                    "customParams": "DateRangeAvgKPI"
                 }
             }
         },
