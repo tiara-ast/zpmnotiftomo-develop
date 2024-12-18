@@ -77,7 +77,7 @@ export default {
 
     getBasicParams2(oNavigateParams, oSelectionVariantParams: SelectionVariant): object[] {
 
-        const basicParams = ['Werks', 'Auart', 'Ingpr','OrderCrtrd']
+        const basicParams = ['Werks', 'Auart', 'Ingpr','OrderCrtrd','OrderCrtrdto']
         const params = []
 
         basicParams.forEach(b => {

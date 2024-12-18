@@ -75,9 +75,9 @@ server:
             metadataXmlPath: ./webapp/localService/mainService/metadata.xml
             mockdataRootPath: ./webapp/localService/data
           - urlPath: /sap/opu/odata/sap/ZC_NOTIFTOORDER_AGGR_HRTM_CDS/
+            metadataPath: ./webapp/localService/mainService/metadata.xml
+            mockdataPath: ./webapp/localService/mainService/mockdata
             generateMockData: true
-            metadataXmlPath: ./webapp/localService/mainService/metadata.xml
-            mockdataRootPath: ./webapp/localService/mainService/mockdata
           - urlPath: /sap/opu/odata/sap/ZC_NOTIFTOORDER_AGGR_HRLM_CDS
             generateMockData: true
             metadataXmlPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_HRLM_CDS/metadata.xml
@@ -95,9 +95,9 @@ server:
             metadataXmlPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_HR_CDS/metadata.xml
             mockdataRootPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_HR_CDS/mockdata
           - urlPath: /sap/opu/odata/sap/ZC_NOTIFTOORDER_AGGR_AVG_CDS
-            metadataPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_AVG_CDS/metadata.xml
-            mockdataPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_AVG_CDS/mockdata
             generateMockData: true
+            metadataXmlPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_AVG_CDS/metadata.xml
+            mockdataRootPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_AVG_CDS/mockdata
         annotations:
           - localPath: ./webapp/localService/mainService/ZC_NOTIFTOORDER_AGGR_HRTM_CD_VAN.xml
             urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_NOTIFTOORDER_AGGR_HRTM_CD_VAN',Version='0001')/$value/
@@ -119,6 +119,10 @@ server:
             urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_NOTIFTOORDER_AGGR_HR_CDS_VAN',Version='0001')/$value/
           - localPath: ./webapp/localService/ZC_NOTIFTOORDER_AGGR_AVG_CDS/ZC_NOTIFTOORDER_AGGR_AVG_CDS_Annotation.xml
             urlPath: /sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZC_NOTIFTOORDER_AGGR_AVG_CDS_VAN',Version='0001')/$value/
+          - localPath: ./webapp/annotations/annotationhr.xml
+            urlPath: annotations/annotationhr.xml
+          - localPath: ./webapp/annotations/annotationavg.xml
+            urlPath: annotations/annotationavg.xml
 builder:
   customTasks:
     - name: ui5-tooling-transpile-task
