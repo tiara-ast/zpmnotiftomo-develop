@@ -26,6 +26,9 @@
     </edmx:Reference>
     <edmx:DataServices>
         <Schema Namespace="zc_notiftoorder_aggr_hrtm_cd_van.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="ZC_NOTIFTOORDER_AGGR_HRTM_CDS.ZC_NOTIFTOORDER_AGGR_HRTMType/OrderCrtrd">
+                <Annotation Term="Common.FilterDefaultValueHigh" Date="2024-12-19"/>
+            </Annotations>
             <Annotations Target="ZC_NOTIFTOORDER_AGGR_HRTM_CDS.ZC_NOTIFTOORDER_AGGR_HRTMType/OrderCrtrdto">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>

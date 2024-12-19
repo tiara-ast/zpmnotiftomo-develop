@@ -459,7 +459,7 @@
                     "entitySet": "ZC_NOTIFTOORDER_AGGR_AVG",
                     "title": "To Date Average Conversion to MO by Plant",
                     "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#PlantDateRangeAvgKPI",
-                    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PlantDateRangeAvgKPI",
+                    "presentationAnnotationPath": "com.sap.vocabiiiularies.UI.v1.PresentationVariant#PlantDateRangeAvgKPI",
                     "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#PlantDateRangeAvgKPI",
                     "customParams": "DateRangeAvgKPI"
                 }

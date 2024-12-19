@@ -11,8 +11,8 @@
                 </Key>
                 <Property Name="ID" Type="Edm.String" Nullable="false" sap:filterable="false" sap:updatable="false" sap:sortable="false"/>
                 <Property Name="TotaledProperties" Type="Edm.String" sap:aggregation-role="totaled-properties-list" sap:is-annotation="true" sap:updatable="false" sap:sortable="false"/>
-                <Property Name="OrderCrtrd" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="MO Created Date" sap:quickinfo="Maintenance Order Created Date" sap:creatable="false" sap:updatable="false" sap:semantics="yearmonthday"/>
-                <Property Name="OrderCrtrd_T" Type="Edm.String" MaxLength="10" sap:label="MO Created Date (Description)" sap:quickinfo="Maintenance Order Created Date" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="OrderCrtrd" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="MO Conversion Date" sap:quickinfo="Maintenance Order Created Date" sap:creatable="false" sap:updatable="false" sap:semantics="yearmonthday"/>
+                <Property Name="OrderCrtrd_T" Type="Edm.String" MaxLength="10" sap:label="MO Conversion Date (Description)" sap:quickinfo="Maintenance Order Created Date" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
                 <Property Name="OrderCrtrdto" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="ORDERCRTRDTO" sap:creatable="false" sap:updatable="false" sap:semantics="yearmonthday"/>
                 <Property Name="OrderCrtrdto_T" Type="Edm.String" MaxLength="10" sap:label="ORDERCRTRDTO (Description)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
                 <Property Name="Werks" Type="Edm.String" MaxLength="4" sap:aggregation-role="dimension" sap:filter-restriction="single-value" sap:required-in-filter="true" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
@@ -53,8 +53,8 @@
                     <PropertyRef Name="Auart"/>
                 </Key>
                 <Property Name="Auart" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Order Type" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="OrderCrtrd" Type="Edm.String" MaxLength="10" sap:text="OrderCrtrd_T" sap:label="MO Created Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
-                <Property Name="OrderCrtrd_T" Type="Edm.String" sap:label="MO Created Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OrderCrtrd" Type="Edm.String" MaxLength="10" sap:text="OrderCrtrd_T" sap:label="MO Conversion Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderCrtrd_T" Type="Edm.String" sap:label="MO Conversion Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="OrderCrtrdto" Type="Edm.String" MaxLength="10" sap:text="OrderCrtrdto_T" sap:label="ORDERCRTRDTO" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
                 <Property Name="OrderCrtrdto_T" Type="Edm.String" sap:label="ORDERCRTRDTO (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Werks" Type="Edm.String" MaxLength="4" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
@@ -72,8 +72,8 @@
                     <PropertyRef Name="Ingpr"/>
                 </Key>
                 <Property Name="Ingpr" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Main Work Center" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="OrderCrtrd" Type="Edm.String" MaxLength="10" sap:text="OrderCrtrd_T" sap:label="MO Created Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
-                <Property Name="OrderCrtrd_T" Type="Edm.String" sap:label="MO Created Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OrderCrtrd" Type="Edm.String" MaxLength="10" sap:text="OrderCrtrd_T" sap:label="MO Conversion Date" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="OrderCrtrd_T" Type="Edm.String" sap:label="MO Conversion Date (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="OrderCrtrdto" Type="Edm.String" MaxLength="10" sap:text="OrderCrtrdto_T" sap:label="ORDERCRTRDTO" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
                 <Property Name="OrderCrtrdto_T" Type="Edm.String" sap:label="ORDERCRTRDTO (Description)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Werks" Type="Edm.String" MaxLength="4" sap:label="Plant" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>

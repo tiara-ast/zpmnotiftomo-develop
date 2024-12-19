@@ -186,7 +186,7 @@
                     <Collection>
                         <Record Type="UI.DataFieldForIntentBasedNavigation">
                             <PropertyValue Property="SemanticObject" String="ZPMCustGUI" />
-                            <PropertyValue Property="Action" String="ZPMR0202" />
+                            <PropertyValue Property="Action" String="ZPMR022" />
                             <PropertyValue Property="RequiresContext" Bool="false" />
                         </Record>
                     </Collection>
