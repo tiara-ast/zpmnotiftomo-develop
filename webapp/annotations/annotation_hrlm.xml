@@ -13,6 +13,10 @@
     </edmx:Reference>
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local1">
+        <Annotations Target="SAP.ZC_NOTIFTOORDER_AGGR_HRLMType/Werks">
+                <Annotation Term="Common.FilterDefaultValue" String="2120">
+                </Annotation>
+        </Annotations>
         <Annotations Target="SAP.ZC_NOTIFTOORDER_AGGR_HRLMType">
              <!-- <Annotation Term="UI.SelectionFields">
                     <Collection>

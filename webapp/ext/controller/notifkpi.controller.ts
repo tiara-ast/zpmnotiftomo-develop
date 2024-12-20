@@ -8,11 +8,36 @@ import View from "sap/ui/core/mvc/View";
 export default {
 
     onBeforeRendering(oEvent: Event) {
-       
+        // const filterBar = (oEvent.getSource() as View).byId('ovpGlobalFilter') as SmartFilterBar
+        // filterBar.attachInitialized((e) => {
+        //     filterBar.setFilterData({
+        //         'OrderCrtrd': new Date(),
+        //         // 'Plant': { items: [{ key: '2120' }] },
+        //         // 'MaintenanceOrderType': { items: [{ key: 'BM01' }] },
+        //     }, true)
+        // })
+        // this.modifyStartupExtension()
     },
 
-
-
+//     modifyStartupExtension: function(oCustomSelectionVariant) {
+// debugger
+// 		var iYear = new Date().getFullYear(),
+// 		iMonth = new Date().getMonth() + 1,
+// 		iDate = new Date().getDate();
+// 		oCustomSelectionVariant.addSelectOption("OrderCrtrd", "I", "LE", iYear + "-" + iMonth + "-" + 1, iYear + "-" + iMonth + "-" + iDate);
+// 	debugger
+//     },
+// modifyStartupExtension: function(oStartupObject) {
+    // debugger
+	//var oSelectionVariant = oStartupObject.sCustomParams;
+	//if (oSelectionVariant) {
+	//	oSelectionVariant.removeSelectOption("OrderCrtrd");
+		// var iYear = new Date().getFullYear(),
+		// iMonth = new Date().getMonth() + 1,
+		// iDate = new Date().getDate();
+		//oSelectionVariant.addSelectOption("OrderCrtrd", "I", "BT", iYear + "-" + iMonth + "-" + 1, iYear + "-" + iMonth + "-" + iDate);
+	//}
+// },
     onCustomParams(sCustomParams) {
         
         if (sCustomParams === "ThisMonthHRKPI") {
@@ -305,5 +330,5 @@ export default {
           })
 
         return params
-    },
+    }
 }

@@ -10,45 +10,21 @@
     </edmx:Reference>
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+         <Annotations Target="SAP.ZC_NOTIFTOORDER_AGGR_HRTMType/Werks">
+                <Annotation Term="Common.FilterDefaultValue" String="2120">
+                </Annotation>
+        </Annotations>
+
             <Annotations Target="SAP.ZC_NOTIFTOORDER_AGGR_HRTMType">
                 <Annotation Term="UI.SelectionFields">
                     <Collection>
                         <PropertyPath>Werks</PropertyPath>
                         <PropertyPath>Auart</PropertyPath>
                         <PropertyPath>Ingpr</PropertyPath>
-                        <PropertyPath>OrderCrtrd</PropertyPath>
+                        <PropertyPath >OrderCrtrd</PropertyPath>
                     </Collection>
                 </Annotation>
-                
-             <Annotation Term="UI.SelectionVariant" Qualifier="ThisMonthHRKPI">
-                <Record>
-                    <PropertyValue Property="Parameters">
-                        <Collection>
-                        <Record Type="UI.Parameter">
-                        <PropertyValue Property="PropertyName" PropertyPath="Werks" />
-                        <PropertyValue Property="PropertyValue" String="2120" />
-                        </Record>
-                        </Collection>
-                    </PropertyValue>
-                    <PropertyValue Property="SelectOptions">
-                        <Collection>
-                        <Record Type="UI.SelectOptionType">
-                        <PropertyValue Property="PropertyName" PropertyPath="OrderCrtrd"/>
-                        <PropertyValue Property="Ranges">
-                        <Collection> 
-                        <Record Type="UI.SelectionRangeType">
-                            <PropertyValue EnumMember="UI.SelectionRangeSignType/I" Property="Sign"/>
-                            <PropertyValue EnumMember="UI.SelectionRangeOptionType/BT" Property="Option"/>
-                            <PropertyValue Property="Low" String="01.01.2024"/>
-                            <PropertyValue Property="High" String="31.12.2024"/>
-                        </Record>
-                        </Collection>
-                    </PropertyValue>
-                </Record>
-            </Collection>
-        </PropertyValue>
-    </Record>
-</Annotation>
+  
 
                 <Annotation Term="UI.Chart" Qualifier="ThisMonthHRKPI">
                     <Record Type="UI.ChartDefinitionType">
@@ -129,6 +105,36 @@
                         <PropertyValue Property="Description" String="Total Order (Count)"/>
                     </Record>
                 </Annotation>
+
+     <Annotation Term="UI.SelectionVariant" Qualifier="ThisMonthHRKPI">
+                    <Record Type="UI.SelectionVariantType">
+                        <PropertyValue Property="SelectOptions">
+                            <Collection>
+                                <Record Type="UI.SelectOptionType">
+                                    <PropertyValue Property="PropertyName" PropertyPath="OrderCrtrd" />
+                                    <PropertyValue Property="Ranges">
+                                        <Collection>
+                                            <Record Type="UI.SelectionRangeType">
+                                                <PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I" />
+                                                <PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/LE" />
+                                                <PropertyValue Property="Low" Date="2024-12-31" />
+                                            </Record>
+                                        </Collection>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="UI.Parameter">
+                                    <PropertyValue Property="PropertyName" PropertyPath="Werks" />
+                                    <PropertyValue Property="PropertyValue" String="2120" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+
                 <Annotation Term="UI.Identification" Qualifier="ThisMonthHRKPI">
                     <Collection>
                         <Record Type="UI.DataFieldForIntentBasedNavigation">

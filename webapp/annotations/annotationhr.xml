@@ -13,6 +13,10 @@
     </edmx:Reference>
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local4">
+        <Annotations Target="SAP.ZC_NOTIFTOORDER_AGGR_HRType/Werks">
+                <Annotation Term="Common.FilterDefaultValue" String="2120">
+                </Annotation>
+        </Annotations>
         <Annotations Target="SAP.ZC_NOTIFTOORDER_AGGR_HRType">
              <Annotation Term="UI.SelectionFields">
                     <Collection>
@@ -22,6 +26,42 @@
                         <PropertyPath>OrderCrtrd</PropertyPath>
                     </Collection>
                 </Annotation>
+                <Annotation Term="UI.SelectionVariant" Qualifier="DateRangeHrKPI"> 
+                <Record Type="UI.SelectionVariantType"> 
+                     <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="UI.Parameter">
+                                    <PropertyValue Property="PropertyName" PropertyPath="Werks" />
+                                    <PropertyValue Property="PropertyValue" String="2120" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                </Record>
+                </Annotation>
+
+<Annotation Term="UI.SelectionVariant" Qualifier="PlantDateRangeHrKPI"> 
+                <Record Type="UI.SelectionVariantType">
+                    <PropertyValue Property="SelectOptions">
+                        <Collection>
+                        <Record Type="UI.SelectOptionType">
+                        <PropertyValue Property="PropertyName" PropertyPath="OrderCrtrd"/>
+                        <PropertyValue Property="Ranges">
+                        <Collection> 
+                        <Record Type="UI.SelectionRangeType">
+                            <PropertyValue EnumMember="UI.SelectionRangeSignType/I" Property="Sign"/>
+                            <PropertyValue EnumMember="UI.SelectionRangeOptionType/BT" Property="Option"/>
+                            <PropertyValue Property="Low" Date="2024-01-01" />
+                            <PropertyValue Property="High" Date="2024-12-31" />
+                        </Record>
+                        </Collection>
+                    </PropertyValue>
+                </Record>
+            </Collection>
+        </PropertyValue>
+    </Record>
+</Annotation>
+
+
                 <Annotation Term="UI.Chart" Qualifier="DateRangeHrKPI">
                     <Record Type="UI.ChartDefinitionType">
                         <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>

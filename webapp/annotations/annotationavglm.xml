@@ -13,15 +13,20 @@
     </edmx:Reference>
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local3">
+        <Annotations Target="SAP.ZC_NOTIFTOORDER_AGGR_AVGLMType/Werks">
+                <Annotation Term="Common.FilterDefaultValue" String="2120">
+                </Annotation>
+        </Annotations>
         <Annotations Target="SAP.ZC_NOTIFTOORDER_AGGR_AVGLMType">
             <Annotation Term="UI.SelectionFields">
                     <Collection>
                         <PropertyPath>Werks</PropertyPath>
                         <PropertyPath>Auart</PropertyPath>
                         <PropertyPath>Ingpr</PropertyPath>
-                        <PropertyPath>OrderCrtrd</PropertyPath>
+                        <!-- <PropertyPath>OrderCrtrd</PropertyPath> -->
                     </Collection>
                 </Annotation>
+                                
                 <Annotation Term="UI.Chart" Qualifier="LastMonthAVGKPI">
                     <Record Type="UI.ChartDefinitionType">
                         <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
